@@ -35,10 +35,12 @@
 [ldap]
 {%   for item in gerrit_ldap_info %}
 	server = {{ item.server }}
+        username = {{ item.username }}
 	accountBase = {{ item.accountbase }}
 	accountPattern = {{ item.accountpattern }}
 	accountScope = {{ item.accountscope }}
 	groupBase = {{ item.groupbase }}
+        groupPattern = {{ item.grouppattern }}
 	accountFullName = {{ item.accountfullname }}
 	accountMemberField = {{ item.accountmemberfield }}
 	accountEmailAddress = {{ item.accountemailaddress }}
