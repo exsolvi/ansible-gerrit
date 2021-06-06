@@ -1,13 +1,13 @@
 ---
 - name: debian | installing pre-reqs
   apt:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - openjdk-8-jre-headless
-    - git
-    - gitweb
-    - python-mysqldb
+    pkg:
+      - openjdk-11-jdk-headless
+      - git
+      - gitweb
+      - python-mysqldb
+    state: latest
+    update_cache: true
 
 #- name: debian | installing gitweb (if enabled)
 #  apt:
