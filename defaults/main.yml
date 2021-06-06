@@ -79,6 +79,6 @@ gerrit_site_dir: /var/gerrit
 gerrit_smtp_server: 'smtp.{{ pri_domain_name }}'
 gerrit_sshd_listen_port: 29418
 gerrit_vagrant_install: false  #defines if deploying within a Vagrant environment
-gerrit_version: 2.13.7
+gerrit_version: 3.4.0
 gitweb_cgi_path: /usr/share/gitweb/gitweb.cgi
 pri_domain_name: example.org
