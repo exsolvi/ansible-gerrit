@@ -41,8 +41,8 @@ gerrit_ldap_info:
     accountemailaddress: 'mail'
     accountsshusername: '${sAMAccountName.toLowerCase}'
     referral: 'follow'
-gerrit_mysql_connector_file: mysql-connector-java-5.1.21.jar
-gerrit_mysql_connector_url: http://repo2.maven.org/maven2/mysql/mysql-connector-java/5.1.21
+gerrit_mysql_connector_file: mysql-connector-java-8.0.25.jar
+gerrit_mysql_connector_url: https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.25
 gerrit_plugins:
   - url: https://storage.cloud.google.com/gerritcodereview-plugins/plugins/master/commit-message-length-validator
     name: commit-message-length-validator.jar
