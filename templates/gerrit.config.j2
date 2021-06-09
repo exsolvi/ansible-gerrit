@@ -32,22 +32,48 @@
 	type = gitweb
 	cgi = {{ gitweb_cgi_path }}
 {% if gerrit_auth_type == "LDAP_BIND" %}
+
+{% if gerrit_ldap_info is defined %}
 [ldap]
-{%   for item in gerrit_ldap_info %}
-	server = {{ item.server }}
+{% set item = gerrit_ldap_info %}
+{% if item.server is defined %}
+        server = {{ item.server }}
+{% endif %}
+{% if item.username is defined %}
         username = {{ item.username }}
-	accountBase = {{ item.accountbase }}
-	accountPattern = {{ item.accountpattern }}
-	accountScope = {{ item.accountscope }}
-	groupBase = {{ item.groupbase }}
+{% endif %}
+{% if item.accountbase is defined %}
+        accountBase = {{ item.accountbase }}
+{% endif %}
+{% if item.accountpattern is defined %}
+        accountPattern = {{ item.accountpattern }}
+{% endif %}
+{% if item.accountscope is defined %}
+        accountScope = {{ item.accountscope }}
+{% endif %}
+{% if item.groupbase is defined %}
+        groupBase = {{ item.groupbase }}
+{% endif %}
+{% if item.grouppattern is defined %}
         groupPattern = {{ item.grouppattern }}
-	accountFullName = {{ item.accountfullname }}
-	accountMemberField = {{ item.accountmemberfield }}
-	accountEmailAddress = {{ item.accountemailaddress }}
-	accountSshUserName = {{ item.accountsshusername }}
-	referral = {{ item.referral }}
-	{%   endfor %}
-	{% endif %}
+{% endif %}
+{% if item.accountfullname is defined %}
+        accountFullName = {{ item.accountfullname }}
+{% endif %}
+{% if item.accountmemberfield is defined %}
+        accountMemberField = {{ item.accountmemberfield }}
+{% endif %}
+{% if item.accountemailaddress is defined %}
+        accountEmailAddress = {{ item.accountemailaddress }}
+{% endif %}
+{% if item.accountsshusername is defined %}
+        accountSshUserName = {{ item.accountsshusername }}
+{% endif %}
+{% if item.referral is defined %}
+        referral = {{ item.referral }}
+{% endif %}
+{% endif %}
+
 [plugins]
 {% if gerrit_allow_remote_admin is defined and gerrit_allow_remote_admin %}
     allowRemoteAdmin = true
