@@ -32,7 +32,7 @@
 	type = gitweb
 	cgi = {{ gitweb_cgi_path }}
 
-{% if gerrit_auth_type == "LDAP_BIND" and gerrit_ldap_info is defined %}
+{% if (gerrit_auth_type == "LDAP_BIND" or gerrit_auth_type == "LDAP") and gerrit_ldap_info is defined %}
 [ldap]
 {% set item = gerrit_ldap_info %}
 {% if item.server is defined %}
@@ -70,6 +70,12 @@
 {% endif %}
 {% if item.referral is defined %}
         referral = {{ item.referral }}
+{% endif %}
+{% if item.groupname is defined %}
+        groupName = {{ item.groupname }}
+{% endif %}
+{% if item.localusernametolowercase is defined %}
+        localUsernameToLowerCase = {{ item.localusernametolowercase }}
 {% endif %}
 {% endif %}
 
