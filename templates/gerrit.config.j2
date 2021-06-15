@@ -17,6 +17,9 @@
 	type = LUCENE
 [auth]
 	type = {{ gerrit_auth_type }}
+{% if gerrit_auth_type == "LDAP" %}
+        gitBasicAuthPolicy = HTTP_LDAP
+{% endif %}
 [sendemail]
 	smtpServer = {{ gerrit_smtp_server }}
 [container]
