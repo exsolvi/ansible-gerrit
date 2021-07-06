@@ -29,3 +29,5 @@
   notify: restart apache2
   with_items:
     - cgid
+    - socache_shmcb
+    - ssl
