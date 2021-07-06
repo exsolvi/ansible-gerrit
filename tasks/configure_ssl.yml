@@ -20,5 +20,5 @@
     state: present
   notify: restart apache2
   with_items:
-    - socache_shmc
+    - socache_shmcb
     - ssl
