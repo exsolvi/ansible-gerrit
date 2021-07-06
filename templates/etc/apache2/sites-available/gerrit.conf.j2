@@ -1,0 +1,20 @@
+<VirtualHost *:80>
+  ServerName {{ gerrit_http_hostname }}.{{ pri_domain_name }}
+  Redirect permanent / https://{{ gerrit_http_hostname }}.{{ pri_domain_name }}/
+</VirtualHost>
+
+<VirtualHost *:443>
+  ServerName {{ gerrit_http_hostname }}.{{ pri_domain_name }}
+
+  <Proxy *>
+    Order deny,allow
+    Allow from all
+  </Proxy>
+
+  SSLProxyEngine On
+  ProxyRequests Off
+  ProxyPreserveHost On
+  ProxyPass /gitweb !
+  ProxyPass / http://localhost:{{ gerrit_http_listen_port }}/
+  ProxyPassReverse / http://localhost:{{ gerrit_http_listen_port }}/
+</VirtualHost>

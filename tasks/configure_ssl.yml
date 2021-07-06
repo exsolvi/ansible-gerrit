@@ -1,0 +1,24 @@
+---
+- name: configure_ssl | configuring ssl
+  template:
+    src: etc/apache2/sites-available/gerrit.conf.j2
+    dest: /etc/apache2/sites-available/gerrit.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: configure_ssl | configuring ssl
+  file:
+    src: /etc/apache2/sites-available/gerrit.conf
+    dest: /etc/apache2/sites-enabled/gerrit.conf
+    state: link
+  notify: restart apache2
+
+- name: configure_ssl | enabling apache2 modules
+  apache2_module:
+    name: "{{ item }}"
+    state: present
+  notify: restart apache2
+  with_items:
+    - socache_shmc
+    - ssl
