@@ -18,7 +18,7 @@
 [auth]
 	type = {{ gerrit_auth_type }}
 {% if gerrit_auth_type == "LDAP" %}
-        gitBasicAuthPolicy = HTTP_LDAP
+        gitBasicAuthPolicy = LDAP
 {% endif %}
 [sendemail]
 	smtpServer = {{ gerrit_smtp_server }}
@@ -44,8 +44,13 @@
 {% if item.username is defined %}
         username = {{ item.username }}
 {% endif %}
+{% if item.password is defined %}
+        password = {{ item.password }}
+{% endif %}
 {% if item.accountbase is defined %}
-        accountBase = {{ item.accountbase }}
+{% for base in item.accountbase %}
+        accountBase = {{ base }}
+{% endfor %}
 {% endif %}
 {% if item.accountpattern is defined %}
         accountPattern = {{ item.accountpattern }}
@@ -53,17 +58,14 @@
 {% if item.accountscope is defined %}
         accountScope = {{ item.accountscope }}
 {% endif %}
-{% if item.groupbase is defined %}
-        groupBase = {{ item.groupbase }}
-{% endif %}
-{% if item.grouppattern is defined %}
-        groupPattern = {{ item.grouppattern }}
-{% endif %}
 {% if item.accountfullname is defined %}
         accountFullName = {{ item.accountfullname }}
 {% endif %}
 {% if item.accountmemberfield is defined %}
         accountMemberField = {{ item.accountmemberfield }}
+{% endif %}
+{% if item.accountmemberexpandgroups is defined %}
+        accountMemberExpandGroups = {{ item.accounteemberexpandgroups }}
 {% endif %}
 {% if item.accountemailaddress is defined %}
         accountEmailAddress = {{ item.accountemailaddress }}
@@ -71,11 +73,19 @@
 {% if item.accountsshusername is defined %}
         accountSshUserName = {{ item.accountsshusername }}
 {% endif %}
-{% if item.referral is defined %}
-        referral = {{ item.referral }}
+{% if item.groupbase is defined %}
+{% for base in item.groupbase %}
+        groupBase = {{ base }}
+{% endfor %}
+{% endif %}
+{% if item.grouppattern is defined %}
+        groupPattern = {{ item.grouppattern }}
 {% endif %}
 {% if item.groupname is defined %}
         groupName = {{ item.groupname }}
+{% endif %}
+{% if item.referral is defined %}
+        referral = {{ item.referral }}
 {% endif %}
 {% if item.localusernametolowercase is defined %}
         localUsernameToLowerCase = {{ item.localusernametolowercase }}

@@ -12,7 +12,6 @@
 - include: configure_ssl.yml
   when: gerrit_enable_ssl is defined and gerrit_enable_ssl
 
-
 - include: install_gerrit.yml
 
 - include: gerrit_replication.yml
