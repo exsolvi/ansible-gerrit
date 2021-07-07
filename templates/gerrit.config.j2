@@ -90,6 +90,9 @@
 {% if item.localusernametolowercase is defined %}
         localUsernameToLowerCase = {{ item.localusernametolowercase }}
 {% endif %}
+{% if item.fetchmemberofeagerly is defined %}
+        fetchMemberOfEagerly = {{ item.fetchmemberofeagerly }}
+{% endif %}
 {% endif %}
 
 [plugins]
