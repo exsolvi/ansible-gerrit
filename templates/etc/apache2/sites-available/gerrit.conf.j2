@@ -11,7 +11,12 @@
     Allow from all
   </Proxy>
 
+  SSLEngine on
+  SSLCertificateFile /etc/apache2/cert/{{ gerrit_http_hostname }}.{{ pri_domain_name }}.crt
+  SSLCertificateKeyFile /etc/apache2/cert/{{ gerrit_http_hostname }}.{{ pri_domain_name }}.key
+
   SSLProxyEngine On
+  AllowEncodedSlashes On
   ProxyRequests Off
   ProxyPreserveHost On
   ProxyPass /gitweb !
