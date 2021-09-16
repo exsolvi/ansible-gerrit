@@ -6,6 +6,7 @@
       - git
       - gitweb
       - python3-mysqldb
+      - acl
     state: latest
     update_cache: true
 
