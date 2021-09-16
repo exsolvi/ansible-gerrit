@@ -1,4 +1,13 @@
 ---
+- name: configure_gitweb | enabling apache2 modules
+  apache2_module:
+    name: "{{ item }}"
+    state: present
+  notify: restart apache2
+  with_items:
+    - cgid
+    - proxy_http_module
+
 - name: configure_gitweb | configuring gitweb
   template:
     src: etc/apache2/conf-available/gitweb.conf.j2
@@ -22,11 +31,3 @@
     group: root
     mode: 0644
 
-- name: configure_gitweb | enabling apache2 modules
-  apache2_module:
-    name: "{{ item }}"
-    state: present
-  notify: restart apache2
-  with_items:
-    - cgid
-    - proxy_http_module
