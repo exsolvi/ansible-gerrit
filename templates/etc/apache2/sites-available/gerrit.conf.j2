@@ -20,6 +20,6 @@
   ProxyRequests Off
   ProxyPreserveHost On
   ProxyPass /gitweb !
-  ProxyPass / http://localhost:{{ gerrit_http_listen_port }}/
+  ProxyPass / http://localhost:{{ gerrit_http_listen_port }}/ nocanon
   ProxyPassReverse / http://localhost:{{ gerrit_http_listen_port }}/
 </VirtualHost>
