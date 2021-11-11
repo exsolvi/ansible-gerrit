@@ -9,6 +9,11 @@
         serverId = {{ gerrit_server_id }}
 {% endif %}
 
+{% if gerrit_heap is defined %}
+[container]
+        heapLimit = {{ gerrit_heap }}
+{% endif %}
+
 [database]
 {% for item in gerrit_db_info %}
 	type = {{ item.type }}
